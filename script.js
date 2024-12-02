@@ -5,7 +5,8 @@ function getComputerChoice(){
     return compChoice;
 
 }
-console.log(`Computers choice is ${getComputerChoice()}`);
+let computerChoice = getComputerChoice();
+console.log(`Computers choice is ${computerChoice}`);
 function getHumanChoice(){
     let humanChoice = prompt("Input your choice: rock, paper or scissors");
     humanChoice = humanChoice.toLowerCase();
@@ -13,8 +14,24 @@ function getHumanChoice(){
         return humanChoice;
     }else{
         console.log("please input either rock, paper or scissors");
-        getHumanChoice();
+        return getHumanChoice();
     }
     
 }
-console.log(`Humans choice is ${getHumanChoice()}`);
+let humanChoice = getHumanChoice();
+console.log(`Humans choice is ${humanChoice}`);
+function playRound(humanChoice, computerChoice){
+    if (humanChoice==computerChoice){
+        console.log("It's a draw!")
+    }else if((humanChoice=='rock' && computerChoice=='paper')||
+             (humanChoice=='paper' && computerChoice=='scissors')||
+             (humanChoice=='scissors' && computerChoice=='rock')){
+                computerScore+=1;
+                console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+             }
+    else{
+        humanScore+=1;
+        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+    }
+}
+playRound(humanChoice, computerChoice);
